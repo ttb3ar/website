@@ -1,24 +1,38 @@
+/* Light Theme (Default) */
 body {
+    background-color: #ffffff;
+    color: #000000;
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+}
+
+header, footer {
+    background-color: #f1f1f1;
     text-align: center;
-    background-color: #f0f0f0;
-    color: #333;
+    padding: 10px;
 }
 
-header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 1em 0;
+button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-main {
-    margin: 20px;
+/* Dark Theme */
+[data-theme="dark"] {
+    background-color: #121212;
+    color: #ffffff;
 }
 
-footer {
-    margin-top: 20px;
-    font-size: 0.8em;
-    color: #555;
+[data-theme="dark"] header,
+[data-theme="dark"] footer {
+    background-color: #1f1f1f;
+}
+
+[data-theme="dark"] button {
+    background-color: #ff5722;
+    color: #000000;
 }
