@@ -1,11 +1,12 @@
-// Theme Toggle Script
-const themeToggle = document.getElementById('theme-toggle');
-const currentTheme = localStorage.getItem('theme') || 'light';
+// Dark mode toggle script
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
 
 // Set the initial theme
 document.documentElement.setAttribute('data-theme', currentTheme);
 
 // Update the button text based on the theme
+const themeToggle = document.getElementById('theme-toggle');
 themeToggle.textContent = currentTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
 
 // Add event listener for toggle button
