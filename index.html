@@ -15,18 +15,16 @@
         <button onclick="window.location.href='https://sunnyyou3.github.io/Website/'">Click Me</button>
         <h2>About Us</h2>
         <p>This is an image of our team:</p>
-        <img src="images/DSC_0454.jpg" alt="Our Team" style="max-width: 100%; height: auto;">
+
+        <!-- Lightroom Slideshow Replacing the Image -->
+        <div class='lr_embed' style='position: relative; padding-bottom: 50%; height: 0; overflow: hidden;'>
+            <iframe id='iframe' src='https://lightroom.adobe.com/embed/shares/2c60d391e29c4662b5067a6d621717ff/slideshow?background_color=%232D2D2D&color=%23999999' 
+            frameborder='0' style='width:100%; height:100%; position: absolute; top:0; left:0;'></iframe>
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 TEEEEEED</p>
     </footer>
-
-    <!-- Heading and Lightroom Slideshow -->
-    <h2 style="text-align: center; margin-top: 20px;">More from Our Team:</h2>
-    <div class='lr_embed' style='position: relative; padding-bottom: 50%; height: 0; overflow: hidden;'>
-        <iframe id='iframe' src='https://lightroom.adobe.com/embed/shares/2c60d391e29c4662b5067a6d621717ff/slideshow?background_color=%232D2D2D&color=%23999999' 
-        frameborder='0' style='width:100%; height:100%; position: absolute; top:0; left:0;'></iframe>
-    </div>
 
     <script src="script.js"></script>
 </body>
