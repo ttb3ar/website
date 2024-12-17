@@ -27,10 +27,10 @@ if (themeToggle) {
         // Temporarily show the new mode on the button
         themeToggle.textContent = `Switching to ${newMode.charAt(0).toUpperCase() + newMode.slice(1)} Mode...`;
         
-        // Revert to 'Click Me' after 2 seconds
+        // Revert to 'Click Me' after .25 seconds
         setTimeout(() => {
             themeToggle.textContent = 'Click Me';
-        }, 500);
+        }, 250);
     });
 } else {
     console.error('Theme toggle button not found.');
