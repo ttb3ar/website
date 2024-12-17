@@ -35,3 +35,33 @@ if (themeToggle) {
 } else {
     console.error('Theme toggle button not found.');
 }
+
+// Translation Script
+const translateButton = document.getElementById("translate-random");
+
+// Define supported languages
+const languages = ["ar", "cn", "en", "fr", "jp", "kr", "ru", "sp"];
+
+// Replace text dynamically
+function replaceContent(translations) {
+    document.getElementById("header").innerHTML = translations.header;
+    document.getElementById("paragraph").innerHTML = translations.paragraph;
+    document.getElementById("about-us").innerHTML = translations.about_us;
+    document.getElementById("slideshow").innerHTML = translations.slideshow;
+}
+
+// Event listener for the translate button
+translateButton.addEventListener("click", async () => {
+    const randomLanguage = languages[Math.floor(Math.random() * languages.length)];
+    try {
+        // Fetch the JSON translation file
+        const response = await fetch(`translations/${randomLanguage}.json`);
+        const translations = await response.json();
+
+        // Replace page content
+        replaceContent(translations);
+        console.log(`Translated to: ${randomLanguage}`);
+    } catch (error) {
+        console.error("Error loading translation:", error);
+    }
+});
