@@ -1,27 +1,37 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const themeToggle = document.getElementById('theme-toggle');
-    
-    if (!themeToggle) {
-        console.error('Theme toggle button not found!');
-        return;
-    }
+// Dark mode toggle script
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+console.log('System prefers dark mode:', prefersDarkScheme.matches);
 
-    // Initial theme setup
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    
-    // Set initial button text
-    themeToggle.textContent = savedTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+// Set the current theme based on localStorage or system preference
+const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+console.log('Current theme:', currentTheme);
 
-    // Toggle theme on button click
+// Set the initial theme
+document.documentElement.setAttribute('data-theme', currentTheme);
+
+// Get the theme toggle button
+const themeToggle = document.getElementById('theme-toggle');
+if (themeToggle) {
+    themeToggle.textContent = 'Click Me'; // Default button text
+
+    // Event listener for the toggle button
     themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        const currentMode = document.documentElement.getAttribute('data-theme');
+        const newMode = currentMode === 'dark' ? 'light' : 'dark';
+
+        // Change the theme
+        document.documentElement.setAttribute('data-theme', newMode);
+        localStorage.setItem('theme', newMode);
+        console.log('Theme changed to:', newMode);
+
+        // Temporarily show the new mode on the button
+        themeToggle.textContent = `Switching to ${newMode.charAt(0).toUpperCase() + newMode.slice(1)} Mode...`;
         
-        console.log('Changing theme:', currentTheme, '->', newTheme);
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        themeToggle.textContent = newTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+        // Revert to 'Click Me' after .25 seconds
+        setTimeout(() => {
+            themeToggle.textContent = 'Click Me';
+        }, 250);
     });
-});
+} else {
+    console.error('Theme toggle button not found.');
+}
