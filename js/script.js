@@ -21,10 +21,14 @@ if (themeToggle) {
 let translateInitialized = false;
 
 function loadGoogleTranslate() {
-    return new Promise((resolve) => {
-        if (translateInitialized) return resolve(); // Avoid reloading
+    return new Promise((resolve, reject) => {
+        if (translateInitialized) return resolve(); // Prevent multiple loads
         const script = document.createElement('script');
         script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+        script.onerror = () => {
+            console.error('Google Translate script failed to load.');
+            reject(new Error('Google Translate script failed to load.'));
+        };
         document.body.appendChild(script);
 
         window.googleTranslateElementInit = function () {
@@ -40,34 +44,38 @@ function loadGoogleTranslate() {
 
 // Wait for dropdown to appear
 function waitForTranslateDropdown() {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         const checkInterval = setInterval(() => {
-            const translateDropdown = document.querySelector('.goog-te-combo');
-            if (translateDropdown) {
+            const dropdown = document.querySelector('.goog-te-combo');
+            if (dropdown) {
                 clearInterval(checkInterval);
-                resolve(translateDropdown);
+                resolve(dropdown);
             }
         }, 100); // Check every 100ms
+
         setTimeout(() => {
             clearInterval(checkInterval);
             console.error('Google Translate dropdown not found after timeout.');
+            reject(new Error('Dropdown not found.'));
         }, 5000); // Timeout after 5 seconds
     });
 }
 
-// Random Translation
+// Random Translation Button
 const translateButton = document.getElementById('translate-random');
 if (translateButton) {
     translateButton.addEventListener('click', async () => {
-        await loadGoogleTranslate(); // Ensure Google Translate is loaded
-        const dropdown = await waitForTranslateDropdown(); // Wait for dropdown
+        try {
+            await loadGoogleTranslate(); // Ensure Google Translate is loaded
+            const dropdown = await waitForTranslateDropdown(); // Wait for dropdown
 
-        if (dropdown) {
             const languages = ['en', 'es', 'fr', 'de', 'it', 'ja', 'ko', 'pt', 'ru'];
             const randomLanguage = languages[Math.floor(Math.random() * languages.length)];
             dropdown.value = randomLanguage;
             dropdown.dispatchEvent(new Event('change')); // Trigger translation
             console.log(`Translated to: ${randomLanguage}`);
+        } catch (error) {
+            console.error(error.message);
         }
     });
 } else {
