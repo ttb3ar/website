@@ -50,7 +50,7 @@ translateButton.addEventListener("click", async () => {
     // Fade out the content before replacing text
     const mainContent = document.querySelector("main");
     mainContent.classList.add("fade-out");
-    
+
     const randomLanguage = ["en", "fr", "es", "ja"][Math.floor(Math.random() * 4)];
 
     try {
@@ -60,9 +60,9 @@ translateButton.addEventListener("click", async () => {
 
         // Wait for the fade-out to complete before updating content
         setTimeout(() => {
-            replaceContent(translations);
+            replaceContent(translations);  // Replace the content
 
-            // Fade in the content
+            // Fade in the content after replacing it
             mainContent.classList.remove("fade-out");
             mainContent.classList.add("fade-in");
 
