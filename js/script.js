@@ -30,7 +30,7 @@ if (themeToggle) {
         // Revert to 'Click Me' after 2 seconds
         setTimeout(() => {
             themeToggle.textContent = 'Click Me';
-        }, 2000);
+        }, 1000);
     });
 } else {
     console.error('Theme toggle button not found.');
