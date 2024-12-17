@@ -63,6 +63,8 @@ html[data-theme="dark"] h2 {
 /* Main content */
 main {
     padding: 20px;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out; /* Adding opacity transition */
 }
 
 /* Footer */
@@ -76,4 +78,15 @@ footer {
 html[data-theme="dark"] footer {
     background-color: #2c2c2c;
     color: #ffffff;
+}
+
+/* Transition for page content on language change */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
 }
