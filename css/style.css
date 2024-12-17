@@ -1,29 +1,44 @@
-// Dark mode toggle script
-document.addEventListener('DOMContentLoaded', () => {
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    const themeToggle = document.getElementById('theme-toggle');
-    
-    // Determine initial theme
-    const currentTheme = localStorage.getItem('theme') || 
-        (prefersDarkScheme.matches ? 'dark' : 'light');
-    
-    // Set the initial theme
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    
-    // Update the button text based on the theme
-    themeToggle.textContent = currentTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
-    
-    // Add event listener for toggle button
-    themeToggle.addEventListener('click', () => {
-        const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        
-        // Set theme on the root element
-        document.documentElement.setAttribute('data-theme', theme);
-        
-        // Save theme preference
-        localStorage.setItem('theme', theme);
-        
-        // Update button text
-        themeToggle.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
-    });
-});
+/* Base styles */
+html {
+    background-color: white;
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark mode styles - applied to html element */
+html[data-theme="dark"] {
+    background-color: #121212;
+    color: white;
+}
+
+/* Header styles */
+header {
+    background-color: #f4f4f4;
+    transition: background-color 0.3s;
+}
+
+html[data-theme="dark"] header {
+    background-color: #333;
+}
+
+/* Button styles */
+button {
+    background-color: #008cba;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+html[data-theme="dark"] button {
+    background-color: #ff5722;
+    color: white;
+}
+
+/* Text and other elements */
+h1, h2, p {
+    transition: color 0.3s;
+}
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2 {
+    color: #e0e0e0;
+}
