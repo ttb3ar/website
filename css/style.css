@@ -1,101 +1,29 @@
-/* General styles for the website */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff;
-    color: #000000;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-/* Header styles */
-header {
-    background-color: #f4f4f4;
-    padding: 20px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2rem;
-    color: #333333;
-}
-
-/* Footer styles */
-footer {
-    background-color: #f4f4f4;
-    text-align: center;
-    padding: 10px;
-    font-size: 0.9rem;
-    color: #333333;
-}
-
-/* Button styles */
-button {
-    background-color: #008cba;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-button:hover {
-    background-color: #005f73;
-}
-
-/* Dark mode styles */
-[data-theme="dark"] {
-    background-color: #121212;
-    color: #ffffff;
-}
-
-[data-theme="dark"] header,
-[data-theme="dark"] footer {
-    background-color: #1f1f1f;
-    color: #ffffff;
-    border-bottom: 1px solid #333333;
-}
-
-[data-theme="dark"] button {
-    background-color: #ff5722;
-    color: #000000;
-}
-
-[data-theme="dark"] button:hover {
-    background-color: #e64a19;
-}
-
-/* Slideshow container */
-.lr_embed {
-    position: relative;
-    padding-bottom: 50%;
-    height: 0;
-    overflow: hidden;
-}
-
-.lr_embed iframe {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-/* Main content styles */
-main {
-    padding: 20px;
-    line-height: 1.6;
-}
-
-h2 {
-    color: #444444;
-}
-
-/* Dark mode headings */
-[data-theme="dark"] h2 {
-    color: #dddddd;
-}
+// Dark mode toggle script
+document.addEventListener('DOMContentLoaded', () => {
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    const themeToggle = document.getElementById('theme-toggle');
+    
+    // Determine initial theme
+    const currentTheme = localStorage.getItem('theme') || 
+        (prefersDarkScheme.matches ? 'dark' : 'light');
+    
+    // Set the initial theme
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    
+    // Update the button text based on the theme
+    themeToggle.textContent = currentTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+    
+    // Add event listener for toggle button
+    themeToggle.addEventListener('click', () => {
+        const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        
+        // Set theme on the root element
+        document.documentElement.setAttribute('data-theme', theme);
+        
+        // Save theme preference
+        localStorage.setItem('theme', theme);
+        
+        // Update button text
+        themeToggle.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+    });
+});
