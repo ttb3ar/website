@@ -36,7 +36,13 @@ if (themeToggle) {
     console.error('Theme toggle button not found.');
 }
 
-// Function to replace content dynamically
+// Translation Script
+const translateButton = document.getElementById("translate-random");
+
+// Define supported languages
+const languages = ["en", "fr", "es", "ja", "ko", "zh", "ru", "ar"];
+
+// Replace text dynamically
 function replaceContent(translations) {
     document.getElementById("header").innerHTML = translations.header;
     document.getElementById("paragraph").innerHTML = translations.paragraph;
@@ -45,29 +51,16 @@ function replaceContent(translations) {
 }
 
 // Event listener for the translate button
-const translateButton = document.getElementById("translate-random");
 translateButton.addEventListener("click", async () => {
-    // Fade out the content before replacing text
-    const mainContent = document.querySelector("main");
-    mainContent.classList.add("fade-out");
-
-    const randomLanguage = ["en", "fr", "es", "ja"][Math.floor(Math.random() * 4)];
-
+    const randomLanguage = languages[Math.floor(Math.random() * languages.length)];
     try {
-        // Fetch the translation
+        // Fetch the JSON translation file
         const response = await fetch(`translations/${randomLanguage}.json`);
         const translations = await response.json();
 
-        // Wait for the fade-out to complete before updating content
-        setTimeout(() => {
-            replaceContent(translations);  // Replace the content
-
-            // Fade in the content after replacing it
-            mainContent.classList.remove("fade-out");
-            mainContent.classList.add("fade-in");
-
-            console.log(`Translated to: ${randomLanguage}`);
-        }, 300); // 300ms to match fade-out duration
+        // Replace page content
+        replaceContent(translations);
+        console.log(`Translated to: ${randomLanguage}`);
     } catch (error) {
         console.error("Error loading translation:", error);
     }
