@@ -5,18 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The sititest site</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Style for the button container */
+        .button-container {
+            display: flex;
+            gap: 10px; /* Space between buttons */
+        }
+    </style>
 </head>
 <body>
-    <header>
+    <header id="header">
         <h1>Welcome to one of the website of all time!</h1>
     </header>
     <main>
-        <p>Do you trust random links on the internet? <strong> o.O </strong>.</p>
-        <button onclick="window.open('https://sunnyyou3.github.io/Website/', '_blank')">Click Me</button>
-        <button id="theme-toggle">Dark Mode</button>
+        <p id="paragraph">Do you trust random links on the internet? <strong> o.O </strong>.</p>
+        <div class="button-container">
+            <button onclick="window.open('https://sunnyyou3.github.io/Website/', '_blank')">Click Me</button>
+            <button id="theme-toggle">Dark Mode</button>
+            <button id="translate-random">Translate Randomly</button> <!-- Button for Translation -->
+        </div>
         
-        <h2>About Us</h2>
-        <p>This is our team slideshow:</p>
+        <h2 id="about-us">About Us</h2>
+        <p id="slideshow">This is our team slideshow:</p>
         <!-- Lightroom Slideshow -->
         <div class='lr_embed' style='position: relative; padding-bottom: 50%; height: 0; overflow: hidden;'>
             <iframe id='iframe' src='https://lightroom.adobe.com/embed/shares/2c60d391e29c4662b5067a6d621717ff/slideshow?background_color=%232D2D2D&color=%23999999' 
