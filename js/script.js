@@ -35,3 +35,37 @@ if (themeToggle) {
 } else {
     console.error('Theme toggle button not found.');
 }
+
+// Google Translate Random Language Button
+const translateButton = document.getElementById('translate-random');
+if (translateButton) {
+    translateButton.addEventListener('click', () => {
+        const languages = ['en', 'es', 'fr', 'de', 'it', 'ja', 'ko', 'pt', 'ru'];
+        const randomLanguage = languages[Math.floor(Math.random() * languages.length)];
+
+        // Dynamically load the Google Translate script
+        const googleTranslateScript = document.createElement('script');
+        googleTranslateScript.src = `https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
+        document.body.appendChild(googleTranslateScript);
+
+        // Google Translate initialization function
+        window.googleTranslateElementInit = function() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: languages.join(','),
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+
+            // Translate the page to the selected random language
+            setTimeout(() => {
+                const translateElement = document.querySelector('.goog-te-combo');
+                if (translateElement) {
+                    translateElement.value = randomLanguage;
+                    translateElement.dispatchEvent(new Event('change')); // Trigger the change event to perform translation
+                }
+            }, 200);
+        };
+    });
+} else {
+    console.error('Translate button not found.');
+}
