@@ -40,7 +40,7 @@ if (themeToggle) {
 const translateButton = document.getElementById("translate-random");
 
 // Define supported languages
-const languages = ["en", "fr", "es", "ja", "ko", "zh", "ru", "ar"];
+const languages = ["ar", "cn", "en", "fr", "jp", "kr", "ru", "sp"];
 
 // Replace text dynamically
 function replaceContent(translations) {
