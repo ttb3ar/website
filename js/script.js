@@ -1,37 +1,32 @@
-// Dark mode toggle script
+// Dark Mode Toggle Script
 const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-console.log('System prefers dark mode:', prefersDarkScheme.matches);
-
-// Set the current theme based on localStorage or system preference
 const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
-console.log('Current theme:', currentTheme);
-
-// Set the initial theme
 document.documentElement.setAttribute('data-theme', currentTheme);
 
-// Get the theme toggle button
 const themeToggle = document.getElementById('theme-toggle');
-if (themeToggle) {
-    themeToggle.textContent = 'Click Me'; // Default button text
+themeToggle.textContent = currentTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
 
-    // Event listener for the toggle button
-    themeToggle.addEventListener('click', () => {
-        const currentMode = document.documentElement.getAttribute('data-theme');
-        const newMode = currentMode === 'dark' ? 'light' : 'dark';
+themeToggle.addEventListener('click', () => {
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    themeToggle.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
 
-        // Change the theme
-        document.documentElement.setAttribute('data-theme', newMode);
-        localStorage.setItem('theme', newMode);
-        console.log('Theme changed to:', newMode);
+    // Temporary text change for a few seconds
+    themeToggle.textContent = theme === 'dark' ? 'Switching to Dark Mode...' : 'Switching to Light Mode...';
+    setTimeout(() => themeToggle.textContent = 'Click Me', 2000);
+});
 
-        // Temporarily show the new mode on the button
-        themeToggle.textContent = `Switching to ${newMode.charAt(0).toUpperCase() + newMode.slice(1)} Mode...`;
-        
-        // Revert to 'Click Me' after .25 seconds
-        setTimeout(() => {
-            themeToggle.textContent = 'Click Me';
-        }, 250);
-    });
-} else {
-    console.error('Theme toggle button not found.');
-}
+// Random Language Button Script
+const languages = ['es', 'fr', 'de', 'ja', 'zh', 'it', 'ar', 'ru', 'pt', 'nl']; // Language codes
+const randomLangButton = document.getElementById('random-lang-button');
+
+randomLangButton.addEventListener('click', () => {
+    const randomLang = languages[Math.floor(Math.random() * languages.length)]; // Randomly pick a language
+    const googleFrame = document.querySelector('.goog-te-combo'); // Google Translate dropdown
+
+    if (googleFrame) {
+        googleFrame.value = randomLang; // Set dropdown to the random language
+        googleFrame.dispatchEvent(new Event('change')); // Simulate user action
+    }
+});
