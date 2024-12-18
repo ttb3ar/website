@@ -1,6 +1,11 @@
 {
-    "header": "<h1>Welcome to one of the websites of all time!</h1>",
-    "paragraph": "Do you trust random links on the internet? <strong>o.O</strong>.",
+    "header": "Welcome to one of the website of all time!",
+    "paragraph": "Do you trust random links on the internet? <strong> o.O </strong>.",
     "about_us": "Bored?",
-    "slideshow": "Enjoy some fan service:"
+    "slideshow": "Enjoy some fan service:",
+    "buttons": [
+        "Click Me", 
+        "Dark Mode", 
+        "Translate"
+    ]
 }
