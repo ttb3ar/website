@@ -3,9 +3,8 @@
     "paragraph": "Do you trust random links on the internet? <strong> o.O </strong>.",
     "about_us": "Bored?",
     "slideshow": "Enjoy some fan service:",
-    "buttons": [
-        "Click Me", 
-        "Dark Mode", 
-        "Translate"
-    ]
+    "click_me": "Click Me",
+    "translating": "Translating...",
+    "switching_to_dark_mode": "Switching to dark mode...",
+    "switching_to_light_mode": "Switching to light mode..."    
 }
