@@ -44,10 +44,20 @@ const languages = ["ar", "cn", "en", "fr", "jp", "kr", "ru", "sp"];
 
 // Replace text dynamically
 function replaceContent(translations) {
+    // Translate page text elements
     document.getElementById("header").innerHTML = translations.header;
     document.getElementById("paragraph").innerHTML = translations.paragraph;
     document.getElementById("about-us").innerHTML = translations.about_us;
     document.getElementById("slideshow").innerHTML = translations.slideshow;
+
+    // Translate button texts
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button, index) => {
+        // Use button translations if available, otherwise keep current text
+        if (translations.buttons && translations.buttons[index]) {
+            button.textContent = translations.buttons[index];
+        }
+    });
 }
 
 // Event listener for the translate button
