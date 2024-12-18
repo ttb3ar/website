@@ -83,33 +83,26 @@ html[data-theme="dark"] footer {
     overflow: hidden;
     transition: 
         background-color 0.3s ease, 
-        transform 0.3s ease;
+        transform 0.3s ease,
+        opacity 0.3s ease;
 }
 
 #translate-random.translation-in-progress {
-    background-color: #4CAF50; /* Green color to indicate processing */
+    background-color: #008cba; /* Match default button color */
     transform: scale(1.05); /* Slight scale up effect */
-    animation: pulse 0.5s infinite alternate;
+    opacity: 0.7;
 }
 
-@keyframes pulse {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0.7;
-    }
+/* Dark mode translation button styles */
+html[data-theme="dark"] #translate-random.translation-in-progress {
+    background-color: #ff5722; /* Match dark mode button color */
 }
 
-/* Ensure smooth text change */
+/* Ensure smooth text and state changes */
 #translate-random {
     transition: 
         background-color 0.3s ease, 
         transform 0.3s ease, 
-        color 0.3s ease;
-}
-
-/* Dark mode specific styles for translation button */
-html[data-theme="dark"] #translate-random.translation-in-progress {
-    background-color: #2196F3; /* Blue color in dark mode */
+        color 0.3s ease,
+        opacity 0.3s ease;
 }
