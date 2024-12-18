@@ -53,6 +53,11 @@ function replaceContent(translations) {
 // Event listener for the translate button
 translateButton.addEventListener("click", async () => {
     const randomLanguage = languages[Math.floor(Math.random() * languages.length)];
+    
+    // Add translation in progress class
+    translateButton.classList.add('translation-in-progress');
+    translateButton.textContent = `Translating...`;
+
     try {
         // Fetch the JSON translation file
         const response = await fetch(`translations/${randomLanguage}.json`);
@@ -61,7 +66,22 @@ translateButton.addEventListener("click", async () => {
         // Replace page content
         replaceContent(translations);
         console.log(`Translated to: ${randomLanguage}`);
+
+        // Remove translation in progress class after a short delay
+        setTimeout(() => {
+            translateButton.classList.remove('translation-in-progress');
+            translateButton.textContent = 'Click Me';
+        }, 250);
     } catch (error) {
         console.error("Error loading translation:", error);
+        
+        // Remove translation in progress class and show error
+        translateButton.classList.remove('translation-in-progress');
+        translateButton.textContent = 'Error';
+        
+        // Revert to original text after a short delay
+        setTimeout(() => {
+            translateButton.textContent = 'Click Me';
+        }, 250);
     }
 });
