@@ -1,6 +1,10 @@
 {
-    "header": "<h1>¡Bienvenido a uno de los mejores sitios web de todos los tiempos!</h1>",
-    "paragraph": "¿Confías en los enlaces aleatorios en Internet? <strong>o.O</strong>.",
-    "about_us": "¿Aburrido?",
-    "slideshow": "¡Disfruta de un poco de fan service gratis:"
+    "header": "Bienvenue sur l'un des sites les plus incroyables !",
+    "paragraph": "Faites-vous confiance aux liens aléatoires sur Internet ? <strong> o.O </strong>",
+    "about_us": "Ennuyé ?",
+    "slideshow": "Profitez de quelques services de fans :",
+    "click_me": "Cliquez ici",
+    "translating": "Traduction en cours...",
+    "switching_to_dark_mode": "Passage en mode sombre...",
+    "switching_to_light_mode": "Passage en mode clair..."
 }
