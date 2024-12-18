@@ -82,6 +82,6 @@ translateButton.addEventListener("click", async () => {
         // Revert to original text after a short delay
         setTimeout(() => {
             translateButton.textContent = 'Click Me';
-        }, 250);
+        }, 1000);
     }
 });
