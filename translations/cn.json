@@ -6,5 +6,7 @@
     "click_me": "点击这里",
     "translating": "正在翻译...",
     "switching_to_dark_mode": "切换到深色模式...",
-    "switching_to_light_mode": "切换到浅色模式..."
+    "switching_to_light_mode": "切换到浅色模式...",
+    "hacked_message": "你被黑了 >:)",
+    "unhack_button": "点击这里解除黑客攻击"
 }
