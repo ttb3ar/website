@@ -6,5 +6,7 @@
     "click_me": "انقر هنا",
     "translating": "جاري الترجمة...",
     "switching_to_dark_mode": "جارٍ التبديل إلى الوضع الداكن...",
-    "switching_to_light_mode": "جارٍ التبديل إلى الوضع الفاتح..."
+    "switching_to_light_mode": "جارٍ التبديل إلى الوضع الفاتح...",
+    "hacked_message": "لقد تم اختراقك >:)",
+    "unhack_button": "اضغط هنا للتراجع عن الاختراق"
 }
