@@ -6,5 +6,7 @@
     "click_me": "Click Me",
     "translating": "Translating...",
     "switching_to_dark_mode": "Switching to dark mode...",
-    "switching_to_light_mode": "Switching to light mode..."    
+    "switching_to_light_mode": "Switching to light mode...",
+    "hacked_message": "you have been hacked >:)",
+    "unhack_button": "click here to get unhacked"
 }
