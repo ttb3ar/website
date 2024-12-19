@@ -1,6 +1,10 @@
 {
-    "header": "<h1>Bienvenue sur l'un des meilleurs sites de tous les temps !</h1>",
-    "paragraph": "Faites-vous confiance aux liens aléatoires sur Internet ? <strong>o.O</strong>.",
-    "about_us": "Ennuyé(e) ?",
-    "slideshow": "Profitez d'un peu de fan service gratuit:"
+    "header": "Bienvenue sur l'un des sites les plus incroyables !",
+    "paragraph": "Faites-vous confiance aux liens aléatoires sur Internet ? <strong> o.O </strong>",
+    "about_us": "Ennuyé ?",
+    "slideshow": "Profitez de quelques services de fans :",
+    "click_me": "Cliquez ici",
+    "translating": "Traduction en cours...",
+    "switching_to_dark_mode": "Passage en mode sombre...",
+    "switching_to_light_mode": "Passage en mode clair..."
 }
