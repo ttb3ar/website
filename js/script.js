@@ -40,6 +40,9 @@ if (themeToggle) {
         const currentMode = document.documentElement.getAttribute('data-theme');
         const newMode = currentMode === 'dark' ? 'light' : 'dark';
 
+        // Add the animation class
+        themeToggle.classList.add('theme-switching');
+
         // Try to get current translation
         let translations = {};
         try {
@@ -61,8 +64,9 @@ if (themeToggle) {
         
         themeToggle.textContent = switchText;
         
-        // Revert to 'Click Me' after .25 seconds
+        // Remove the animation class and revert text after .25 seconds
         setTimeout(() => {
+            themeToggle.classList.remove('theme-switching');
             themeToggle.textContent = translations.click_me || 'Click Me';
         }, 250);
     });
