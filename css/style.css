@@ -38,7 +38,11 @@ button {
     padding: 10px 20px;
     margin: 10px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: 
+        background-color 0.3s, 
+        color 0.3s,
+        transform 0.3s ease,
+        opacity 0.3s ease;
 }
 
 html[data-theme="dark"] button {
@@ -77,6 +81,7 @@ html[data-theme="dark"] footer {
     background-color: #2c2c2c;
     color: #ffffff;
 }
+
 /* Translation button transition styles */
 #translate-random {
     position: relative;
@@ -88,18 +93,34 @@ html[data-theme="dark"] footer {
 }
 
 #translate-random.translation-in-progress {
-    background-color: #008cba; /* Match default button color */
-    transform: scale(1.05); /* Slight scale up effect */
+    background-color: #008cba;
+    transform: scale(1.05);
     opacity: 0.7;
 }
 
 /* Dark mode translation button styles */
 html[data-theme="dark"] #translate-random.translation-in-progress {
-    background-color: #ff5722; /* Match dark mode button color */
+    background-color: #ff5722;
 }
 
-/* Ensure smooth text and state changes */
-#translate-random {
+/* Theme toggle button styles */
+#theme-toggle {
+    position: relative;
+    overflow: hidden;
+    transition: 
+        background-color 0.3s ease, 
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+#theme-toggle.theme-switching {
+    transform: scale(1.05);
+    opacity: 0.7;
+}
+
+/* Ensure smooth text and state changes for both buttons */
+#translate-random,
+#theme-toggle {
     transition: 
         background-color 0.3s ease, 
         transform 0.3s ease, 
