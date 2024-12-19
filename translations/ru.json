@@ -6,5 +6,7 @@
     "click_me": "Кликните сюда",
     "translating": "Идёт перевод...",
     "switching_to_dark_mode": "Переключение в тёмный режим...",
-    "switching_to_light_mode": "Переключение в светлый режим..."
+    "switching_to_light_mode": "Переключение в светлый режим...",
+    "hacked_message": "Вы были взломаны >:)",
+    "unhack_button": "Нажмите здесь, чтобы отменить взлом"
 }
