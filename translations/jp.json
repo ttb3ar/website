@@ -6,5 +6,7 @@
     "click_me": "ここをクリック",
     "translating": "翻訳中...",
     "switching_to_dark_mode": "ダークモードに切り替え中...",
-    "switching_to_light_mode": "ライトモードに切り替え中..."
+    "switching_to_light_mode": "ライトモードに切り替え中...",
+    "hacked_message": "あなたはハッキングされました >:)",
+    "unhack_button": "ここをクリックしてハッキングを解除する"
 }
