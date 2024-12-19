@@ -1,6 +1,10 @@
 {
-    "header": "<h1>史上最高のウェブサイトの1つへようこそ！</h1>",
-    "paragraph": "インターネット上のランダムなリンクを信じますか？ <strong>o.O</strong>。",
-    "about_us": "暇？",
-    "slideshow": "ファンサービスどうぞ："
+    "header": "史上最高のサイトへようこそ！",
+    "paragraph": "インターネット上のランダムなリンクを信じますか？ <strong> o.O </strong>",
+    "about_us": "退屈していませんか？",
+    "slideshow": "ファンサービスを楽しんでください：",
+    "click_me": "ここをクリック",
+    "translating": "翻訳中...",
+    "switching_to_dark_mode": "ダークモードに切り替え中...",
+    "switching_to_light_mode": "ライトモードに切り替え中..."
 }
