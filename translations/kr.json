@@ -6,5 +6,7 @@
     "click_me": "여기를 클릭",
     "translating": "번역 중...",
     "switching_to_dark_mode": "다크 모드로 전환 중...",
-    "switching_to_light_mode": "라이트 모드로 전환 중..."
+    "switching_to_light_mode": "라이트 모드로 전환 중...",
+    "hacked_message": "당신은 해킹당했습니다 >:)",
+    "unhack_button": "여기를 클릭하여 해킹 해제"
 }
