@@ -6,5 +6,7 @@
     "click_me": "Cliquez ici",
     "translating": "Traduction en cours...",
     "switching_to_dark_mode": "Passage en mode sombre...",
-    "switching_to_light_mode": "Passage en mode clair..."
+    "switching_to_light_mode": "Passage en mode clair...",
+    "hacked_message": "Vous avez été piraté >:)",
+    "unhack_button": "Cliquez ici pour annuler le piratage"
 }
