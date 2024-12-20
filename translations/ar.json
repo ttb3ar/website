@@ -16,5 +16,14 @@
     "game_over": "انتهت اللعبة!",
     "final_score": "النتيجة النهائية",
     "play_again": "العب مرة أخرى",
-    "back_to_home": "العودة إلى الصفحة الرئيسية"
+    "back_to_home": "العودة إلى الصفحة الرئيسية",
+
+    "// Dashboard translations": "قسم خاص بجمل لوحة القيادة للأمن السيبراني",
+    "dashboard_title": "لوحة القيادة للأمن السيبراني",
+    "ip_label": "عنوان IP الخاص بك:",
+    "browser_label": "المتصفح الخاص بك:",
+    "https_label": "حالة HTTPS:",
+    "https_secure": "آمن (HTTPS)",
+    "https_insecure": "غير آمن (HTTP)",
+    "security_tip": "نصيحة أمنية: لا تثق أبدًا في الروابط من مصادر غير معروفة!"
 }
