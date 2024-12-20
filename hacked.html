@@ -35,10 +35,14 @@
         const savedTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
 
-        // Get current language and translate if needed
-        const currentLanguage = localStorage.getItem('currentLanguage') || 'en';
+        // Reset language when leaving the page
+        window.addEventListener('beforeunload', () => {
+            localStorage.removeItem('currentLanguage');
+        });
         
         async function translateHackedPage() {
+            // Get current language and translate if needed
+            const currentLanguage = localStorage.getItem('currentLanguage') || 'en';
             try {
                 const response = await fetch(`translations/${currentLanguage}.json`);
                 const translations = await response.json();
