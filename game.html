@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch the Square!</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        
+        canvas {
+            border: 2px solid #333;
+            background: white;
+        }
+
+        #score {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        #menu {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+
+        button {
+            background-color: #008cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div id="score">Score: <span id="scoreValue">0</span></div>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <div id="menu">
+        <h2>Game Over!</h2>
+        <p>Final Score: <span id="finalScore">0</span></p>
+        <button onclick="startGame()">Play Again</button>
+        <button onclick="window.location.href='index.html'">Back to Home</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreElement = document.getElementById('scoreValue');
+        const menuElement = document.getElementById('menu');
+        const finalScoreElement = document.getElementById('finalScore');
+
+        let score = 0;
+        let gameSpeed = 2;
+        let isGameOver = false;
+
+        // Player square
+        const player = {
+            x: canvas.width / 2,
+            y: canvas.height - 30,
+            width: 30,
+            height: 30,
+            color: '#008cba'
+        };
+
+        // Target square
+        const target = {
+            x: Math.random() * (canvas.width - 20),
+            y: 0,
+            width: 20,
+            height: 20,
+            color: '#ff4444'
+        };
+
+        function drawPlayer() {
+            ctx.fillStyle = player.color;
+            ctx.fillRect(player.x, player.y, player.width, player.height);
+        }
+
+        function drawTarget() {
+            ctx.fillStyle = target.color;
+            ctx.fillRect(target.x, target.y, target.width, target.height);
+        }
+
+        function updateGame() {
+            // Move target down
+            target.y += gameSpeed;
+
+            // Check for collision
+            if (target.y + target.height > player.y && 
+                target.x < player.x + player.width && 
+                target.x + target.width > player.x) {
+                // Caught the target
+                score++;
+                scoreElement.textContent = score;
+                gameSpeed += 0.2;
+                resetTarget();
+            }
+
+            // Check if target was missed
+            if (target.y > canvas.height) {
+                gameOver();
+            }
+        }
+
+        function resetTarget() {
+            target.y = 0;
+            target.x = Math.random() * (canvas.width - target.width);
+        }
+
+        function gameOver() {
+            isGameOver = true;
+            finalScoreElement.textContent = score;
+            menuElement.style.display = 'block';
+        }
+
+        function startGame() {
+            score = 0;
+            gameSpeed = 2;
+            isGameOver = false;
+            scoreElement.textContent = '0';
+            menuElement.style.display = 'none';
+            resetTarget();
+            gameLoop();
+        }
+
+        function gameLoop() {
+            if (isGameOver) return;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawPlayer();
+            drawTarget();
+            updateGame();
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Mouse movement controls
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            player.x = Math.max(0, Math.min(canvas.width - player.width, mouseX));
+        });
+
+        // Touch controls for mobile
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const rect = canvas.getBoundingClientRect();
+            const touch = e.touches[0];
+            const touchX = touch.clientX - rect.left;
+            player.x = Math.max(0, Math.min(canvas.width - player.width, touchX));
+        }, { passive: false });
+
+        // Start the game
+        startGame();
+    </script>
+</body>
+</html>
