@@ -37,6 +37,16 @@ function replaceContent(translations) {
     hackedButton.textContent = translations.click_me || 'Click Me';
     // Add this line to translate the last button
     document.querySelector('.button-container button:last-child').textContent = translations.click_me || 'Click Me';
+
+    // Translate the dashboard
+    document.querySelector("#cyber-dashboard h2").textContent = translations.dashboard_title || "Cybersecurity Dashboard";
+    document.querySelector("#ip-address-label").textContent = translations.ip_label || "Your IP Address:";
+    document.querySelector("#browser-info-label").textContent = translations.browser_label || "Your Browser:";
+    document.querySelector("#https-status-label").textContent = translations.https_label || "HTTPS Status:";
+    document.querySelector("#https-status").textContent = window.location.protocol === "https:"
+        ? translations.https_secure || "Secure (HTTPS)"
+        : translations.https_insecure || "Not Secure (HTTP)";
+    document.querySelector("#security-tip").textContent = translations.security_tip || "Security Tip: Never trust links from unknown sources!";
 }
 
 // Modify the existing theme toggle script to use translations
