@@ -8,5 +8,13 @@
     "switching_to_dark_mode": "Cambiando al modo oscuro...",
     "switching_to_light_mode": "Cambiando al modo claro...",
     "hacked_message": "Has sido hackeado >:)",
-    "unhack_button": "Haz clic aquí para deshacer el hackeo"
+    "unhack_button": "Haz clic aquí para deshacer el hackeo",
+
+    "// Game translations": "Sección para cadenas relacionadas con el juego",
+    "game_title": "¡Atrapa el Cuadrado!",
+    "score": "Puntuación",
+    "game_over": "¡Juego Terminado!",
+    "final_score": "Puntuación Final",
+    "play_again": "Jugar de Nuevo",
+    "back_to_home": "Volver a Inicio"
 }
