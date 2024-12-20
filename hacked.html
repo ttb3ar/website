@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HACKED!</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .hacked-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            gap: 20px;
+        }
+        
+        .hacked-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <main class="hacked-container">
+        <h1 class="hacked-text" id="hacked-message">you have been hacked >:)</h1>
+        <button onclick="window.location.href='index.html'" id="unhack-button">click here to get unhacked</button>
+    </main>
+
+    <script>
+        // Get theme from localStorage and apply it
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+
+        // Get current language and translate if needed
+        const currentLanguage = localStorage.getItem('currentLanguage') || 'en';
+        
+        async function translateHackedPage() {
+            try {
+                const response = await fetch(`translations/${currentLanguage}.json`);
+                const translations = await response.json();
+                
+                // Update text if translations exist
+                if (translations.hacked_message) {
+                    document.getElementById('hacked-message').textContent = translations.hacked_message;
+                }
+                if (translations.unhack_button) {
+                    document.getElementById('unhack-button').textContent = translations.unhack_button;
+                }
+            } catch (error) {
+                console.error("Error loading translation:", error);
+            }
+        }
+
+        // Call translation function when page loads
+        translateHackedPage();
+    </script>
+    <script src="js/confetti.js"></script>
+</body>
+</html>

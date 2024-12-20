@@ -1,10 +1,12 @@
 {
-    "header": "¡Bienvenido a uno de los sitios más increíbles!",
+    "header": "<h1>¡Bienvenido a uno de los sitios más increíbles!</h1>",
     "paragraph": "¿Confías en los enlaces aleatorios en Internet? <strong> o.O </strong>",
     "about_us": "¿Aburrido?",
     "slideshow": "Disfruta de algunos servicios para fans:",
     "click_me": "Haz clic aquí",
     "translating": "Traduciendo...",
     "switching_to_dark_mode": "Cambiando al modo oscuro...",
-    "switching_to_light_mode": "Cambiando al modo claro..."
+    "switching_to_light_mode": "Cambiando al modo claro...",
+    "hacked_message": "Has sido hackeado >:)",
+    "unhack_button": "Haz clic aquí para deshacer el hackeo"
 }

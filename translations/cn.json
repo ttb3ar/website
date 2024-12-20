@@ -1,10 +1,12 @@
 {
-    "header": "欢迎来到有史以来最棒的网站！",
+    "header": "<h1>欢迎来到有史以来最棒的网站！</h1>",
     "paragraph": "你相信网络上的随机链接吗？<strong>o.O</strong>",
     "about_us": "无聊了吗？",
     "slideshow": "欣赏一些免费的粉丝福利:",
     "click_me": "点击这里",
     "translating": "正在翻译...",
     "switching_to_dark_mode": "切换到深色模式...",
-    "switching_to_light_mode": "切换到浅色模式..."
+    "switching_to_light_mode": "切换到浅色模式...",
+    "hacked_message": "你被黑了 >:)",
+    "unhack_button": "点击这里解除黑客攻击"
 }

@@ -29,6 +29,8 @@ function replaceContent(translations) {
     firstButton.textContent = translations.click_me || 'Click Me';
     themeToggle.textContent = translations.click_me || 'Click Me';
     translateButton.textContent = translations.click_me || 'Click Me';
+    // Add this line to translate the last button
+    document.querySelector('.button-container button:last-child').textContent = translations.click_me || 'Click Me';
 }
 
 // Modify the existing theme toggle script to use translations
