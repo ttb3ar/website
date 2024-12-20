@@ -1,12 +1,18 @@
 {
-    "header": "<h1>Welcome to one of the website of all time!</h1>",
-    "paragraph": "Do you trust random links on the internet? <strong> o.O </strong>.",
+    "header": "Welcome to one of the websites of all time!",
+    "paragraph": "Do you trust random links on the internet?",
     "about_us": "Bored?",
     "slideshow": "Enjoy some fan service:",
     "click_me": "Click Me",
     "translating": "Translating...",
-    "switching_to_dark_mode": "Switching to dark mode...",
-    "switching_to_light_mode": "Switching to light mode...",
-    "hacked_message": "you have been hacked >:)",
-    "unhack_button": "click here to get unhacked"
+    "switching_to_dark_mode": "Switching to Dark Mode...",
+    "switching_to_light_mode": "Switching to Light Mode...",
+    
+    "// Game translations": "Section for game-related strings",
+    "game_title": "Catch the Square!",
+    "score": "Score",
+    "game_over": "Game Over!",
+    "final_score": "Final Score",
+    "play_again": "Play Again",
+    "back_to_home": "Back to Home"
 }
