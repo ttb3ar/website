@@ -8,5 +8,13 @@
     "switching_to_dark_mode": "다크 모드로 전환 중...",
     "switching_to_light_mode": "라이트 모드로 전환 중...",
     "hacked_message": "당신은 해킹당했습니다 >:)",
-    "unhack_button": "여기를 클릭하여 해킹 해제"
+    "unhack_button": "여기를 클릭하여 해킹 해제",
+
+    "// Game translations": "게임 관련 문자열 섹션",
+    "game_title": "네모를 잡아라!",
+    "score": "점수",
+    "game_over": "게임 오버!",
+    "final_score": "최종 점수",
+    "play_again": "다시 하기",
+    "back_to_home": "홈으로 돌아가기"
 }

@@ -8,5 +8,13 @@
     "switching_to_dark_mode": "ダークモードに切り替え中...",
     "switching_to_light_mode": "ライトモードに切り替え中...",
     "hacked_message": "あなたはハッキングされました >:)",
-    "unhack_button": "ここをクリックしてハッキングを解除する"
+    "unhack_button": "ここをクリックしてハッキングを解除する",
+
+    "// Game translations": "ゲーム関連の文字列セクション",
+    "game_title": "四角をキャッチ！",
+    "score": "スコア",
+    "game_over": "ゲームオーバー！",
+    "final_score": "最終スコア",
+    "play_again": "もう一度プレイ",
+    "back_to_home": "ホームに戻る"
 }
