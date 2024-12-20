@@ -8,5 +8,13 @@
     "switching_to_dark_mode": "切换到深色模式...",
     "switching_to_light_mode": "切换到浅色模式...",
     "hacked_message": "你被黑了 >:)",
-    "unhack_button": "点击这里解除黑客攻击"
+    "unhack_button": "点击这里解除黑客攻击",
+
+    "// Game translations": "游戏相关字符串部分",
+    "game_title": "抓住方块！",
+    "score": "分数",
+    "game_over": "游戏结束！",
+    "final_score": "最终得分",
+    "play_again": "再玩一次",
+    "back_to_home": "返回主页"
 }
