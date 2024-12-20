@@ -16,5 +16,14 @@
     "game_over": "게임 오버!",
     "final_score": "최종 점수",
     "play_again": "다시 하기",
-    "back_to_home": "홈으로 돌아가기"
+    "back_to_home": "홈으로 돌아가기",
+
+    "// Dashboard translations": "사이버 보안 대시보드 문자열 섹션",
+    "dashboard_title": "사이버 보안 대시보드",
+    "ip_label": "귀하의 IP 주소:",
+    "browser_label": "브라우저:",
+    "https_label": "HTTPS 상태:",
+    "https_secure": "보안됨 (HTTPS)",
+    "https_insecure": "보안되지 않음 (HTTP)",
+    "security_tip": "보안 팁: 신뢰할 수 없는 출처의 링크를 절대 신뢰하지 마십시오!"
 }
