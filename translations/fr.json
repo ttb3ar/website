@@ -8,5 +8,13 @@
     "switching_to_dark_mode": "Passage en mode sombre...",
     "switching_to_light_mode": "Passage en mode clair...",
     "hacked_message": "Vous avez été piraté >:)",
-    "unhack_button": "Cliquez ici pour annuler le piratage"
+    "unhack_button": "Cliquez ici pour annuler le piratage",
+
+    "// Game translations": "Section pour les chaînes liées au jeu",
+    "game_title": "Attrapez le Carré !",
+    "score": "Score",
+    "game_over": "Jeu Terminé !",
+    "final_score": "Score Final",
+    "play_again": "Rejouer",
+    "back_to_home": "Retour à l'Accueil"
 }
