@@ -15,4 +15,13 @@
     "final_score": "Final Score",
     "play_again": "Play Again",
     "back_to_home": "Back to Home"
+
+    "// Dashboard translations": "Section pour les chaînes du tableau de bord de cybersécurité",
+    "dashboard_title": "Tableau de Bord de Cybersécurité",
+    "ip_label": "Votre Adresse IP:",
+    "browser_label": "Votre Navigateur:",
+    "https_label": "Statut HTTPS:",
+    "https_secure": "Sécurisé (HTTPS)",
+    "https_insecure": "Non Sécurisé (HTTP)",
+    "security_tip": "Conseil de Sécurité: Ne faites jamais confiance aux liens provenant de sources inconnues!"
 }
