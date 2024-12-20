@@ -139,3 +139,22 @@ window.addEventListener('pageshow', async () => {
         resetLanguage();
     }
 });
+
+// Cybersecurity Dashboard Implementation
+document.addEventListener("DOMContentLoaded", () => {
+    // Fetch user's IP address
+    const ipAddressSpan = document.getElementById("ip-address");
+    ipAddressSpan.textContent = "Unavailable in generic mode";
+
+    // Detect user's browser
+    const browserInfoSpan = document.getElementById("browser-info");
+    browserInfoSpan.textContent = navigator.userAgent;
+
+    // Check HTTPS status
+    const httpsStatusSpan = document.getElementById("https-status");
+    if (window.location.protocol === "https:") {
+        httpsStatusSpan.textContent = "Secure (HTTPS)";
+    } else {
+        httpsStatusSpan.textContent = "Not Secure (HTTP)";
+    }
+});
