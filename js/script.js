@@ -83,8 +83,6 @@ if (themeToggle) {
 // Translation Script
 translateButton.addEventListener("click", async () => {
     const randomLanguage = languages[Math.floor(Math.random() * languages.length)];
-
-    localStorage.setItem('currentLanguage', randomLanguage);
     
     // Add translation in progress class
     translateButton.classList.add('translation-in-progress');
