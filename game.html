@@ -80,13 +80,13 @@
     </style>
 </head>
 <body>
-    <div id="score">Score: <span id="scoreValue">0</span></div>
+    <div id="score"><span id="scoreText">Score</span>: <span id="scoreValue">0</span></div>
     <canvas id="gameCanvas" width="400" height="400"></canvas>
     <div id="menu">
-        <h2>Game Over!</h2>
-        <p>Final Score: <span id="finalScore">0</span></p>
-        <button onclick="startGame()">Play Again</button>
-        <button onclick="window.location.href='index.html'">Back to Home</button>
+        <h2 id="gameOverText">Game Over!</h2>
+        <p><span id="finalScoreText">Final Score</span>: <span id="finalScore">0</span></p>
+        <button onclick="startGame()" id="playAgainButton">Play Again</button>
+        <button onclick="window.location.href='index.html'" id="backButton">Back to Home</button>
     </div>
 
     <script>
@@ -95,6 +95,82 @@
         const savedTheme = localStorage.getItem('theme');
         const currentTheme = savedTheme || (prefersDarkScheme.matches ? 'dark' : 'light');
         document.documentElement.setAttribute('data-theme', currentTheme);
+
+        // Language handling
+        const translations = {
+            en: {
+                score: "Score",
+                gameOver: "Game Over!",
+                finalScore: "Final Score",
+                playAgain: "Play Again",
+                backToHome: "Back to Home"
+            },
+            sp: {
+                score: "Puntuación",
+                gameOver: "¡Juego Terminado!",
+                finalScore: "Puntuación Final",
+                playAgain: "Jugar de Nuevo",
+                backToHome: "Volver al Inicio"
+            },
+            fr: {
+                score: "Score",
+                gameOver: "Partie Terminée !",
+                finalScore: "Score Final",
+                playAgain: "Rejouer",
+                backToHome: "Retour à l'Accueil"
+            },
+            cn: {
+                score: "分数",
+                gameOver: "游戏结束！",
+                finalScore: "最终分数",
+                playAgain: "再玩一次",
+                backToHome: "返回主页"
+            },
+            jp: {
+                score: "スコア",
+                gameOver: "ゲームオーバー！",
+                finalScore: "最終スコア",
+                playAgain: "もう一度プレイ",
+                backToHome: "ホームに戻る"
+            },
+            kr: {
+                score: "점수",
+                gameOver: "게임 오버!",
+                finalScore: "최종 점수",
+                playAgain: "다시 하기",
+                backToHome: "홈으로 돌아가기"
+            },
+            ru: {
+                score: "Счёт",
+                gameOver: "Игра окончена!",
+                finalScore: "Итоговый счёт",
+                playAgain: "Играть снова",
+                backToHome: "Вернуться на главную"
+            },
+            ar: {
+                score: "النتيجة",
+                gameOver: "!انتهت اللعبة",
+                finalScore: "النتيجة النهائية",
+                playAgain: "العب مرة أخرى",
+                backToHome: "العودة إلى الصفحة الرئيسية"
+            }
+        };
+
+        // Get current language from localStorage or default to English
+        const currentLanguage = localStorage.getItem('currentLanguage') || 'en';
+        const currentTranslations = translations[currentLanguage] || translations.en;
+
+        // Update text content with translations
+        function updateTexts() {
+            document.getElementById('scoreText').textContent = currentTranslations.score;
+            document.getElementById('gameOverText').textContent = currentTranslations.gameOver;
+            document.getElementById('finalScoreText').textContent = currentTranslations.finalScore;
+            document.getElementById('playAgainButton').textContent = currentTranslations.playAgain;
+            document.getElementById('backButton').textContent = currentTranslations.backToHome;
+        }
+
+        // Update texts on page load
+        updateTexts();
 
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
@@ -125,7 +201,6 @@
         };
 
         function drawPlayer() {
-            // Update player color based on current theme
             player.color = getComputedStyle(document.documentElement).getPropertyValue('--button-background');
             ctx.fillStyle = player.color;
             ctx.fillRect(player.x, player.y, player.width, player.height);
