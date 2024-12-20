@@ -1,3 +1,7 @@
+function resetLanguage() {
+    localStorage.removeItem('currentLanguage');
+}
+
 // Dark mode toggle script
 const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 console.log('System prefers dark mode:', prefersDarkScheme.matches);
@@ -114,5 +118,22 @@ translateButton.addEventListener("click", async () => {
         setTimeout(() => {
             translateButton.textContent = 'Click Me';
         }, 1000);
+    }
+});
+
+window.addEventListener('pageshow', async () => {
+    const savedLanguage = localStorage.getItem('currentLanguage');
+    if (!savedLanguage) {
+        resetLanguage(); // Reset to default if no language is saved
+        return;
+    }
+
+    try {
+        const response = await fetch(`translations/${savedLanguage}.json`);
+        const translations = await response.json();
+        replaceContent(translations);
+    } catch (error) {
+        console.error("Error loading saved translation:", error);
+        resetLanguage();
     }
 });
