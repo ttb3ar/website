@@ -17,6 +17,7 @@ document.documentElement.setAttribute('data-theme', currentTheme);
 const themeToggle = document.getElementById('theme-toggle');
 const translateButton = document.getElementById("translate-random");
 const firstButton = document.querySelector('.button-container button:first-child');
+const hackedButton = document.getElementById('translate-hacked');
 
 // Define supported languages
 const languages = ["ar", "cn", "en", "fr", "jp", "kr", "ru", "sp"];
@@ -33,6 +34,7 @@ function replaceContent(translations) {
     firstButton.textContent = translations.click_me || 'Click Me';
     themeToggle.textContent = translations.click_me || 'Click Me';
     translateButton.textContent = translations.click_me || 'Click Me';
+    hackedButton.textContent = translations.click_me || 'Click Me';
     // Add this line to translate the last button
     document.querySelector('.button-container button:last-child').textContent = translations.click_me || 'Click Me';
 }
