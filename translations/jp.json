@@ -16,5 +16,14 @@
     "game_over": "ゲームオーバー！",
     "final_score": "最終スコア",
     "play_again": "もう一度プレイ",
-    "back_to_home": "ホームに戻る"
+    "back_to_home": "ホームに戻る",
+
+    "// Dashboard translations": "サイバーセキュリティダッシュボード用の文字列セクション",
+    "dashboard_title": "サイバーセキュリティダッシュボード",
+    "ip_label": "あなたのIPアドレス:",
+    "browser_label": "ブラウザ:",
+    "https_label": "HTTPSステータス:",
+    "https_secure": "安全 (HTTPS)",
+    "https_insecure": "安全ではありません (HTTP)",
+    "security_tip": "セキュリティのヒント: 知らないソースからのリンクを信頼しないでください!"
 }

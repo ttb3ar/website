@@ -16,5 +16,14 @@
     "game_over": "¡Juego Terminado!",
     "final_score": "Puntuación Final",
     "play_again": "Jugar de Nuevo",
-    "back_to_home": "Volver a Inicio"
+    "back_to_home": "Volver a Inicio",
+
+    "// Dashboard translations": "Sección para cadenas del panel de ciberseguridad",
+    "dashboard_title": "Panel de Ciberseguridad",
+    "ip_label": "Tu Dirección IP:",
+    "browser_label": "Tu Navegador:",
+    "https_label": "Estado HTTPS:",
+    "https_secure": "Seguro (HTTPS)",
+    "https_insecure": "No Seguro (HTTP)",
+    "security_tip": "Consejo de Seguridad: ¡Nunca confíes en enlaces de fuentes desconocidas!"
 }

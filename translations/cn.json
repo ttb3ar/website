@@ -16,5 +16,14 @@
     "game_over": "游戏结束！",
     "final_score": "最终得分",
     "play_again": "再玩一次",
-    "back_to_home": "返回主页"
+    "back_to_home": "返回主页",
+
+    "// Dashboard translations": "网络安全仪表板的字符串部分",
+    "dashboard_title": "网络安全仪表板",
+    "ip_label": "您的IP地址:",
+    "browser_label": "您的浏览器:",
+    "https_label": "HTTPS状态:",
+    "https_secure": "安全 (HTTPS)",
+    "https_insecure": "不安全 (HTTP)",
+    "security_tip": "安全提示：永远不要信任来自未知来源的链接！"
 }

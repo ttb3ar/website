@@ -37,6 +37,16 @@ function replaceContent(translations) {
     hackedButton.textContent = translations.click_me || 'Click Me';
     // Add this line to translate the last button
     document.querySelector('.button-container button:last-child').textContent = translations.click_me || 'Click Me';
+
+    // Translate the dashboard
+    document.querySelector("#cyber-dashboard h2").textContent = translations.dashboard_title || "Cybersecurity Dashboard";
+    document.querySelector("#ip-address-label").textContent = translations.ip_label || "Your IP Address:";
+    document.querySelector("#browser-info-label").textContent = translations.browser_label || "Your Browser:";
+    document.querySelector("#https-status-label").textContent = translations.https_label || "HTTPS Status:";
+    document.querySelector("#https-status").textContent = window.location.protocol === "https:"
+        ? translations.https_secure || "Secure (HTTPS)"
+        : translations.https_insecure || "Not Secure (HTTP)";
+    document.querySelector("#security-tip").textContent = translations.security_tip || "Security Tip: Never trust links from unknown sources!";
 }
 
 // Modify the existing theme toggle script to use translations
@@ -137,5 +147,24 @@ window.addEventListener('pageshow', async () => {
     } catch (error) {
         console.error("Error loading saved translation:", error);
         resetLanguage();
+    }
+});
+
+// Cybersecurity Dashboard Implementation
+document.addEventListener("DOMContentLoaded", () => {
+    // Fetch user's IP address
+    const ipAddressSpan = document.getElementById("ip-address");
+    ipAddressSpan.textContent = "Unavailable in generic mode";
+
+    // Detect user's browser
+    const browserInfoSpan = document.getElementById("browser-info");
+    browserInfoSpan.textContent = navigator.userAgent;
+
+    // Check HTTPS status
+    const httpsStatusSpan = document.getElementById("https-status");
+    if (window.location.protocol === "https:") {
+        httpsStatusSpan.textContent = "Secure (HTTPS)";
+    } else {
+        httpsStatusSpan.textContent = "Not Secure (HTTP)";
     }
 });

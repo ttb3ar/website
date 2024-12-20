@@ -14,5 +14,14 @@
     "game_over": "Game Over!",
     "final_score": "Final Score",
     "play_again": "Play Again",
-    "back_to_home": "Back to Home"
+    "back_to_home": "Back to Home",
+
+    "// Dashboard translations": "Section for cybersecurity dashboard strings",
+    "dashboard_title": "Cybersecurity Dashboard",
+    "ip_label": "Your IP Address:",
+    "browser_label": "Your Browser:",
+    "https_label": "HTTPS Status:",
+    "https_secure": "Secure (HTTPS)",
+    "https_insecure": "Not Secure (HTTP)",
+    "security_tip": "Security Tip: Never trust links from unknown sources!"
 }

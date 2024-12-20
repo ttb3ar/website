@@ -16,5 +16,14 @@
     "game_over": "Игра Окончена!",
     "final_score": "Итоговый Счёт",
     "play_again": "Играть Снова",
-    "back_to_home": "Вернуться на Главную"
+    "back_to_home": "Вернуться на Главную",
+
+    "// Dashboard translations": "Раздел для строк панели кибербезопасности",
+    "dashboard_title": "Панель Кибербезопасности",
+    "ip_label": "Ваш IP-адрес:",
+    "browser_label": "Ваш браузер:",
+    "https_label": "HTTPS статус:",
+    "https_secure": "Защищено (HTTPS)",
+    "https_insecure": "Не защищено (HTTP)",
+    "security_tip": "Совет по безопасности: Никогда не доверяйте ссылкам из неизвестных источников!"
 }
