@@ -167,4 +167,8 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         httpsStatusSpan.textContent = "Not Secure (HTTP)";
     }
+
+    // Check if cookies are enabled
+    const cookiesEnabledSpan = document.getElementById("cookies-enabled");
+    cookiesEnabledSpan.textContent = navigator.cookieEnabled ? 'Enabled' : 'Disabled';
 });
