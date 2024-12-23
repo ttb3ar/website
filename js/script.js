@@ -169,6 +169,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Check if cookies are enabled
-    const cookiesEnabledSpan = document.getElementById("cookies-enabled");
+    const cookiesEnabledSpan = document.getElementById("cookies-status");
     cookiesEnabledSpan.textContent = navigator.cookieEnabled ? 'Enabled' : 'Disabled';
 });
