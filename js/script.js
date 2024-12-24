@@ -47,6 +47,9 @@ function replaceContent(translations) {
         ? translations.https_secure || "Secure (HTTPS)"
         : translations.https_insecure || "Not Secure (HTTP)";
     document.querySelector("#cookie-status-label").textContent = translations.cookies_label || "Cookies Status:";
+    document.querySelector("#cookies-status").textContent = navigator.cookieEnabled
+        ? translations.enabled || "Enabled"
+        : translations.disabled || "Disabled";
     document.querySelector("#security-tip").textContent = translations.security_tip || "Security Tip: Never trust links from unknown sources!";
 }
 
