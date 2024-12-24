@@ -46,6 +46,10 @@ function replaceContent(translations) {
     document.querySelector("#https-status").textContent = window.location.protocol === "https:"
         ? translations.https_secure || "Secure (HTTPS)"
         : translations.https_insecure || "Not Secure (HTTP)";
+    document.querySelector("#cookie-status-label").textContent = translations.cookies_label || "Cookies Status:";
+    document.querySelector("#cookies-status").textContent = navigator.cookieEnabled
+        ? translations.enabled || "Enabled"
+        : translations.disabled || "Disabled";
     document.querySelector("#security-tip").textContent = translations.security_tip || "Security Tip: Never trust links from unknown sources!";
 }
 
@@ -167,4 +171,8 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         httpsStatusSpan.textContent = "Not Secure (HTTP)";
     }
+
+    // Check if cookies are enabled
+    const cookiesEnabledSpan = document.getElementById("cookies-status");
+    cookiesEnabledSpan.textContent = navigator.cookieEnabled ? 'Enabled' : 'Disabled';
 });

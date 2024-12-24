@@ -25,5 +25,8 @@
     "https_label": "HTTPS статус:",
     "https_secure": "Защищено (HTTPS)",
     "https_insecure": "Не защищено (HTTP)",
+    "cookies_label": "Статус файлов cookie:",
+    "enabled": "Включено",
+    "disabled": "Отключено",
     "security_tip": "Совет по безопасности: Никогда не доверяйте ссылкам из неизвестных источников!"
 }

@@ -25,5 +25,8 @@
     "https_label": "HTTPS状态:",
     "https_secure": "安全 (HTTPS)",
     "https_insecure": "不安全 (HTTP)",
+    "cookies_label": "Cookie 状态:",
+    "enabled": "已启用",
+    "disabled": "已禁用",
     "security_tip": "安全提示：永远不要信任来自未知来源的链接！"
 }

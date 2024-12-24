@@ -25,5 +25,8 @@
     "https_label": "HTTPS 상태:",
     "https_secure": "보안됨 (HTTPS)",
     "https_insecure": "보안되지 않음 (HTTP)",
+    "cookies_label": "쿠키 상태:",
+    "enabled": "사용함",
+    "disabled": "사용 안 함",
     "security_tip": "보안 팁: 신뢰할 수 없는 출처의 링크를 절대 신뢰하지 마십시오!"
 }

@@ -25,5 +25,8 @@
     "https_label": "HTTPSステータス:",
     "https_secure": "安全 (HTTPS)",
     "https_insecure": "安全ではありません (HTTP)",
+    "cookies_label": "クッキーの状態:",
+    "enabled": "有効",
+    "disabled": "無効",
     "security_tip": "セキュリティのヒント: 知らないソースからのリンクを信頼しないでください!"
 }
