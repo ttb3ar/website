@@ -23,8 +23,8 @@
     "https_label": "HTTPS Status:",
     "https_secure": "Secure (HTTPS)",
     "https_insecure": "Not Secure (HTTP)",
-    "cookies_label": "Cookies Status:",
     "enabled": "Enabled",
     "disabled": "Disabled",
+    "cookies_label": "Cookies Status:",
     "security_tip": "Security Tip: Never trust links from unknown sources!"
 }
