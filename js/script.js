@@ -46,6 +46,7 @@ function replaceContent(translations) {
     document.querySelector("#https-status").textContent = window.location.protocol === "https:"
         ? translations.https_secure || "Secure (HTTPS)"
         : translations.https_insecure || "Not Secure (HTTP)";
+    document.querySelector("#cookies-status-label").textContent = window.location.protocol === "Cookies Status:"
     document.querySelector("#security-tip").textContent = translations.security_tip || "Security Tip: Never trust links from unknown sources!";
 }
 
