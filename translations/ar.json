@@ -25,5 +25,8 @@
     "https_label": "حالة HTTPS:",
     "https_secure": "آمن (HTTPS)",
     "https_insecure": "غير آمن (HTTP)",
+    "cookies_label": "حالة الكوكيز:",
+    "enabled": "مفعل",
+    "disabled": "معطل",
     "security_tip": "نصيحة أمنية: لا تثق أبدًا في الروابط من مصادر غير معروفة!"
 }
