@@ -25,5 +25,8 @@
     "https_label": "Estado HTTPS:",
     "https_secure": "Seguro (HTTPS)",
     "https_insecure": "No Seguro (HTTP)",
+    "cookies_label": "Estado de las cookies:",
+    "enabled": "Habilitado",
+    "disabled": "Deshabilitado",
     "security_tip": "Consejo de Seguridad: ¡Nunca confíes en enlaces de fuentes desconocidas!"
 }
