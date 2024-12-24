@@ -26,5 +26,5 @@
     "cookies_label": "Cookies Status:",
     "enabled": "Enabled",
     "disabled": "Disabled",
-    "security_tip": "Security Tip: Never trust links from unknown sources!"
+    "security_tip": "<strong>Security Tip:</strong> Never trust links from unknown sources!"
 }
