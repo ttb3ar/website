@@ -92,6 +92,15 @@
             transform: scale(1.05);
             opacity: 0.8;
         }
+
+        .flash {
+            animation: flashAnimation 0.3s;
+        }
+
+        @keyframes flashAnimation {
+            0% { background-color: rgba(255, 0, 0, 0.2); }
+            100% { background-color: transparent; }
+        }
     </style>
 </head>
 <body>
@@ -111,6 +120,7 @@
 
     <script>
         const circle = document.getElementById("circle");
+        const game = document.getElementById("game");
         const scoreElement = document.getElementById("scoreValue");
         const timerElement = document.getElementById("timeValue");
         const menuElement = document.getElementById("menu");
@@ -165,6 +175,21 @@
             circle.style.display = 'none';
         }
 
+        function handleMisclick() {
+            if (!isGameOver) {
+                timeLeft = Math.max(0, timeLeft - 1);
+                timerElement.textContent = timeLeft;
+                
+                // Add flash effect to game area
+                game.classList.add('flash');
+                setTimeout(() => game.classList.remove('flash'), 300);
+
+                if (timeLeft <= 0) {
+                    gameOver();
+                }
+            }
+        }
+
         function startGame() {
             score = 0;
             timeLeft = 30;
@@ -187,11 +212,20 @@
             moveCircle();
         }
 
-        circle.addEventListener("click", () => {
+        // Circle click handler
+        circle.addEventListener("click", (e) => {
             if (!isGameOver) {
+                e.stopPropagation(); // Prevent event bubbling to game area
                 score++;
                 scoreElement.textContent = score;
                 moveCircle();
+            }
+        });
+
+        // Game area click handler for misclicks
+        game.addEventListener("click", (e) => {
+            if (e.target === game) {
+                handleMisclick();
             }
         });
 
