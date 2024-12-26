@@ -97,7 +97,7 @@
     </div>
     <div id="menu">
         <h2 id="gameOverText">Game Over!</h2>
-        <p id="finalScoreText">Final Score<span id="finalScore">0</span></p>
+        <p id="finalScoreText">Final Score: <span id="finalScore">0</span></p>
         <button onclick="startGame()" id="playAgainText">Play Again</button>
         <button onclick="window.location.href='index.html'" id="backHomeText">Back to Home</button>
     </div>
@@ -116,26 +116,14 @@
         let obstacles = [];
         let animationId;
 
-        // Player triangle
+        // Player triangle - now smaller and centered
         const player = {
             x: canvas.width / 2,
-            y: canvas.height - 30,
-            size: 20,
+            y: canvas.height / 2,
+            size: 10,
             rotation: 0,
             speed: 5
         };
-
-        function drawTriangle(x, y, size, rotation) {
-            ctx.save();
-            ctx.translate(x, y);
-            ctx.rotate(rotation);
-            ctx.beginPath();
-            ctx.moveTo(0, -size);
-            ctx.lineTo(size, size);
-            ctx.lineTo(-size, size);
-            ctx.closePath();
-            ctx.restore();
-        }
 
         function drawPlayer() {
             ctx.save();
@@ -152,13 +140,38 @@
         }
 
         function createObstacle() {
-            return {
-                x: Math.random() * (canvas.width - 40) + 20,
-                y: -20,
-                width: 40 + Math.random() * 60,
+            const side = Math.floor(Math.random() * 4); // 0: top, 1: right, 2: bottom, 3: left
+            let obstacle = {
+                width: 20,
                 height: 20,
-                speed: 2 + level * 0.5
+                speed: 2 + level * 0.5,
+                direction: { x: 0, y: 0 }
             };
+
+            switch(side) {
+                case 0: // top
+                    obstacle.x = Math.random() * canvas.width;
+                    obstacle.y = -obstacle.height;
+                    obstacle.direction.y = 1;
+                    break;
+                case 1: // right
+                    obstacle.x = canvas.width + obstacle.width;
+                    obstacle.y = Math.random() * canvas.height;
+                    obstacle.direction.x = -1;
+                    break;
+                case 2: // bottom
+                    obstacle.x = Math.random() * canvas.width;
+                    obstacle.y = canvas.height + obstacle.height;
+                    obstacle.direction.y = -1;
+                    break;
+                case 3: // left
+                    obstacle.x = -obstacle.width;
+                    obstacle.y = Math.random() * canvas.height;
+                    obstacle.direction.x = 1;
+                    break;
+            }
+
+            return obstacle;
         }
 
         function drawObstacles() {
@@ -169,7 +182,6 @@
         }
 
         function checkCollision(player, obstacle) {
-            // Simple bounding box collision
             const playerBox = {
                 x: player.x - player.size,
                 y: player.y - player.size,
@@ -196,13 +208,17 @@
             }
 
             obstacles.forEach((obstacle, index) => {
-                obstacle.y += obstacle.speed;
+                obstacle.x += obstacle.direction.x * obstacle.speed;
+                obstacle.y += obstacle.direction.y * obstacle.speed;
                 
                 if (checkCollision(player, obstacle)) {
                     gameOver();
                 }
 
-                if (obstacle.y > canvas.height) {
+                if (obstacle.x < -obstacle.width || 
+                    obstacle.x > canvas.width + obstacle.width ||
+                    obstacle.y < -obstacle.height || 
+                    obstacle.y > canvas.height + obstacle.height) {
                     obstacles.splice(index, 1);
                     score += 10;
                     scoreElement.textContent = score;
@@ -231,7 +247,7 @@
             isGameOver = false;
             obstacles = [];
             player.x = canvas.width / 2;
-            player.y = canvas.height - 30;
+            player.y = canvas.height / 2;
             player.rotation = 0;
             
             scoreElement.textContent = '0';
@@ -255,7 +271,6 @@
             keys[e.key] = false;
         });
 
-        // Game update loop for movement
         setInterval(() => {
             if (!isGameOver) {
                 if (keys['ArrowLeft'] && player.x > player.size) {
