@@ -12,6 +12,8 @@
 
     "// Game translations": "Sección para cadenas relacionadas con el juego",
     "game_title": "¡Atrapa el Cuadrado!",
+    "circle_game_title": "¡Haz clic en el círculo!",
+    "time": "Tiempo",
     "score": "Puntuación",
     "game_over": "¡Juego Terminado!",
     "final_score": "Puntuación Final",

@@ -12,6 +12,8 @@
 
     "// Game translations": "Раздел для игровых строк",
     "game_title": "Поймай Квадрат!",
+    "circle_game_title": "Нажмите на круг!",
+    "time": "Время",
     "score": "Счёт",
     "game_over": "Игра Окончена!",
     "final_score": "Итоговый Счёт",

@@ -12,6 +12,8 @@
 
     "// Game translations": "Section pour les chaînes liées au jeu",
     "game_title": "Attrapez le Carré !",
+    "circle_game_title": "Cliquez sur le cercle!",
+    "time": "Temps",
     "score": "Score",
     "game_over": "Jeu Terminé !",
     "final_score": "Score Final",

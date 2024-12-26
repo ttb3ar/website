@@ -12,6 +12,8 @@
 
     "// Game translations": "게임 관련 문자열 섹션",
     "game_title": "네모를 잡아라!",
+    "circle_game_title": "원을 클릭하세요!",
+    "time": "시간",
     "score": "점수",
     "game_over": "게임 오버!",
     "final_score": "최종 점수",

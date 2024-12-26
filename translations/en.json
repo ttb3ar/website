@@ -10,6 +10,8 @@
     
     "// Game translations": "Section for game-related strings",
     "game_title": "Catch the Square!",
+    "circle_game_title": "Click the Circle!",
+    "time": "Time",
     "score": "Score",
     "game_over": "Game Over!",
     "final_score": "Final Score",

@@ -157,6 +157,23 @@ window.addEventListener('pageshow', async () => {
     }
 });
 
+// Get the random game redirect button
+const randomGameRedirectButton = document.getElementById('rand-game');
+
+if (randomGameRedirectButton) {
+    // Add click event listener to handle random redirection
+    randomGameRedirectButton.addEventListener('click', () => {
+        // Generate a random number between 0 and 1
+        const isGame1 = Math.random() < 0.5;
+
+        // Redirect based on the random number
+        const targetPage = isGame1 ? 'game.html' : 'game2.html';
+        window.location.href = targetPage;
+    });
+} else {
+    console.error('Random game redirect button not found.');
+}
+
 // Cybersecurity Dashboard Implementation
 document.addEventListener("DOMContentLoaded", () => {
     // Fetch user's IP address

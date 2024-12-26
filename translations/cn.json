@@ -12,6 +12,8 @@
 
     "// Game translations": "游戏相关字符串部分",
     "game_title": "抓住方块！",
+    "circle_game_title": "点击圆圈!",
+    "time": "时间",
     "score": "分数",
     "game_over": "游戏结束！",
     "final_score": "最终得分",
