@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigate the Triangle</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body[data-theme="dark"] {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        #game {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            border: 2px solid #333;
+            background: white;
+            margin: 20px;
+        }
+
+        body[data-theme="dark"] #game {
+            background: #2c2c2c;
+            border-color: #666;
+        }
+
+        #stats {
+            font-size: 24px;
+            margin: 20px 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        #menu {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+
+        body[data-theme="dark"] #menu {
+            background: rgba(44, 44, 44, 0.9);
+        }
+
+        button {
+            background-color: #008cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        body[data-theme="dark"] button {
+            background-color: #ff5722;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+
+        #controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="stats">
+        <div id="score"><span id="scoreText">Score: </span><span id="scoreValue">0</span></div>
+        <div id="level"><span id="levelText">Level: </span><span id="levelValue">1</span></div>
+    </div>
+    <canvas id="game" width="400" height="400"></canvas>
+    <div id="controls">
+        <p id="instructionsText">Use arrow keys to move, Space to rotate</p>
+    </div>
+    <div id="menu">
+        <h2 id="gameOverText">Game Over!</h2>
+        <p id="finalScoreText">Final Score: <span id="finalScore">0</span></p>
+        <button onclick="startGame()" id="playAgainText">Play Again</button>
+        <button onclick="window.location.href='index.html'" id="backHomeText">Back to Home</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('game');
+        const ctx = canvas.getContext('2d');
+        const scoreElement = document.getElementById('scoreValue');
+        const levelElement = document.getElementById('levelValue');
+        const menuElement = document.getElementById('menu');
+        const finalScoreElement = document.getElementById('finalScore');
+
+        let score = 0;
+        let level = 1;
+        let isGameOver = false;
+        let obstacles = [];
+        let animationId;
+
+        // Player triangle
+        const player = {
+            x: canvas.width / 2,
+            y: canvas.height - 30,
+            size: 20,
+            rotation: 0,
+            speed: 5
+        };
+
+        function drawTriangle(x, y, size, rotation) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(rotation);
+            ctx.beginPath();
+            ctx.moveTo(0, -size);
+            ctx.lineTo(size, size);
+            ctx.lineTo(-size, size);
+            ctx.closePath();
+            ctx.restore();
+        }
+
+        function drawPlayer() {
+            ctx.save();
+            ctx.translate(player.x, player.y);
+            ctx.rotate(player.rotation);
+            ctx.beginPath();
+            ctx.moveTo(0, -player.size);
+            ctx.lineTo(player.size, player.size);
+            ctx.lineTo(-player.size, player.size);
+            ctx.closePath();
+            ctx.fillStyle = document.body.getAttribute('data-theme') === 'dark' ? '#ff5722' : '#008cba';
+            ctx.fill();
+            ctx.restore();
+        }
+
+        function createObstacle() {
+            return {
+                x: Math.random() * (canvas.width - 40) + 20,
+                y: -20,
+                width: 40 + Math.random() * 60,
+                height: 20,
+                speed: 2 + level * 0.5
+            };
+        }
+
+        function drawObstacles() {
+            ctx.fillStyle = document.body.getAttribute('data-theme') === 'dark' ? '#ff8a65' : '#4CAF50';
+            obstacles.forEach(obstacle => {
+                ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+            });
+        }
+
+        function checkCollision(player, obstacle) {
+            // Simple bounding box collision
+            const playerBox = {
+                x: player.x - player.size,
+                y: player.y - player.size,
+                width: player.size * 2,
+                height: player.size * 2
+            };
+
+            return playerBox.x < obstacle.x + obstacle.width &&
+                   playerBox.x + playerBox.width > obstacle.x &&
+                   playerBox.y < obstacle.y + obstacle.height &&
+                   playerBox.y + playerBox.height > obstacle.y;
+        }
+
+        function gameOver() {
+            isGameOver = true;
+            cancelAnimationFrame(animationId);
+            finalScoreElement.textContent = score;
+            menuElement.style.display = 'block';
+        }
+
+        function updateGame() {
+            if (Math.random() < 0.02 + level * 0.005) {
+                obstacles.push(createObstacle());
+            }
+
+            obstacles.forEach((obstacle, index) => {
+                obstacle.y += obstacle.speed;
+                
+                if (checkCollision(player, obstacle)) {
+                    gameOver();
+                }
+
+                if (obstacle.y > canvas.height) {
+                    obstacles.splice(index, 1);
+                    score += 10;
+                    scoreElement.textContent = score;
+                    
+                    if (score > level * 100) {
+                        level++;
+                        levelElement.textContent = level;
+                    }
+                }
+            });
+        }
+
+        function gameLoop() {
+            if (isGameOver) return;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawPlayer();
+            drawObstacles();
+            updateGame();
+            animationId = requestAnimationFrame(gameLoop);
+        }
+
+        function startGame() {
+            score = 0;
+            level = 1;
+            isGameOver = false;
+            obstacles = [];
+            player.x = canvas.width / 2;
+            player.y = canvas.height - 30;
+            player.rotation = 0;
+            
+            scoreElement.textContent = '0';
+            levelElement.textContent = '1';
+            menuElement.style.display = 'none';
+            
+            gameLoop();
+        }
+
+        // Keyboard controls
+        const keys = {};
+        window.addEventListener('keydown', (e) => {
+            keys[e.key] = true;
+            
+            if (e.key === ' ') {
+                player.rotation += Math.PI / 4;
+            }
+        });
+
+        window.addEventListener('keyup', (e) => {
+            keys[e.key] = false;
+        });
+
+        // Game update loop for movement
+        setInterval(() => {
+            if (!isGameOver) {
+                if (keys['ArrowLeft'] && player.x > player.size) {
+                    player.x -= player.speed;
+                }
+                if (keys['ArrowRight'] && player.x < canvas.width - player.size) {
+                    player.x += player.speed;
+                }
+                if (keys['ArrowUp'] && player.y > player.size) {
+                    player.y -= player.speed;
+                }
+                if (keys['ArrowDown'] && player.y < canvas.height - player.size) {
+                    player.y += player.speed;
+                }
+            }
+        }, 1000 / 60);
+
+        // Set theme based on localStorage
+        function setTheme() {
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', currentTheme);
+        }
+
+        // Update translations based on current language
+        async function updateTranslations() {
+            const currentLanguage = localStorage.getItem('currentLanguage') || 'en';
+            try {
+                const response = await fetch(`translations/${currentLanguage}.json`);
+                const translations = await response.json();
+                
+                // Update text elements
+                document.title = translations.triangle_game_title || 'Navigate the Triangle';
+                document.getElementById('gameOverText').textContent = translations.game_over || 'Game Over!';
+                document.getElementById('playAgainText').textContent = translations.play_again || 'Play Again';
+                document.getElementById('backHomeText').textContent = translations.back_home || 'Back to Home';
+                document.getElementById('scoreText').textContent = translations.score || 'Score: ';
+                document.getElementById('levelText').textContent = translations.level || 'Level: ';
+                document.getElementById('instructionsText').textContent = 
+                    translations.triangle_instructions || 'Use arrow keys to move, Space to rotate';
+                
+                const finalScoreSpan = document.getElementById('finalScore');
+                const currentScore = finalScoreSpan.textContent;
+                document.getElementById('finalScoreText').textContent = translations.final_score || 'Final Score: ';
+                finalScoreSpan.textContent = currentScore;
+            } catch (error) {
+                console.error("Error loading translation:", error);
+            }
+        }
+
+        // Initialize theme and translations
+        setTheme();
+        updateTranslations();
+
+        // Watch for theme changes
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'theme') {
+                setTheme();
+            } else if (e.key === 'currentLanguage') {
+                updateTranslations();
+            }
+        });
+
+        // Start the game
+        startGame();
+    </script>
+</body>
+</html>
