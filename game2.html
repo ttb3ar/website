@@ -4,7 +4,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="images/redcirlce.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Click the Circle</title>
+    <title>Click the Circle!</title>
     <style>
         body {
             display: flex;
@@ -146,7 +146,7 @@
                 const translations = await response.json();
                 
                 // Update text elements
-                document.title = translations.circle_game_title || 'Click the Circle';
+                document.title = translations.circle_game_title || 'Click the Circle!';
                 document.getElementByID('score').textContent = translations.score || 'Score:';
                 document.getElementById('timer').textContent = translations.time || 'Time:';
                 document.getElementById('gameOverText').textContent = translations.game_over || 'Game Over!';
