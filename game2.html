@@ -106,8 +106,8 @@
 </head>
 <body>
     <div id="stats">
-        <div id="score">Score: <span id="scoreValue">0</span></div>
-        <div id="timer">Time: <span id="timeValue">30</span></div>
+        <div id="score"><span id="scoreText">Score: </span><span id="scoreValue">0</span></div>
+        <div id="timer"><span id="timeText">Time: </span><span id="timeValue">30</span></div>
     </div>
     <div id="game">
         <div id="circle"></div>
@@ -147,8 +147,8 @@
                 
                 // Update text elements
                 document.title = translations.circle_game_title || 'Click the Circle!';
-                document.getElementById('score').textContent = translations.score || 'Score:';
-                document.getElementById('timer').textContent = translations.time || 'Time:';
+                document.getElementById('scoreText').textContent = translations.score || 'Score:';
+                document.getElementById('timeText').textContent = translations.time || 'Time:';
                 document.getElementById('gameOverText').textContent = translations.game_over || 'Game Over!';
                 document.getElementById('playAgainText').textContent = translations.play_again || 'Play Again';
                 document.getElementById('backHomeText').textContent = translations.back_to_home || 'Back to Home';
