@@ -12,6 +12,8 @@
 
     "// Game translations": "ゲーム関連の文字列セクション",
     "game_title": "四角をキャッチ！",
+    "circle_game_title": "円をクリック！",
+    "time": "時間",
     "score": "スコア",
     "game_over": "ゲームオーバー！",
     "final_score": "最終スコア",
