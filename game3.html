@@ -310,8 +310,7 @@
                 document.getElementById('levelText').textContent = translations.level || 'Level';
                 document.getElementById('instructionsText').textContent = 
                     translations.triangle_instructions || 'Use arrow keys to move, Space to rotate';
-                document.getElementById('finalScoreText').textContent = 
-                    (translations.final_score || 'Final Score') + finalScoreElement.textContent;
+                document.getElementById('finalScoreText').textContent = (translations.final_score || 'Final Score');
             } catch (error) {
                 console.error("Error loading translation:", error);
             }
