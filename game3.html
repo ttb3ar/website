@@ -93,7 +93,7 @@
     </div>
     <canvas id="game" width="400" height="400"></canvas>
     <div id="controls">
-        <p id="instructionsText">Use arrow keys to move, Space to rotate</p>
+        <p id="instructionsText">Use arrow keys to move, Space to slow down</p>
     </div>
     <div id="menu">
         <h2 id="gameOverText">Game Over!</h2>
@@ -122,6 +122,8 @@
             y: canvas.height / 2,
             size: 10,
             rotation: 0,
+            normalSpeed: 5,
+            slowSpeed: 2,  // New slower speed when space is pressed
             speed: 5
         };
 
@@ -140,7 +142,7 @@
         }
 
         function createObstacle() {
-            const side = Math.floor(Math.random() * 4); // 0: top, 1: right, 2: bottom, 3: left
+            const side = Math.floor(Math.random() * 4);
             let obstacle = {
                 width: 20,
                 height: 20,
@@ -149,22 +151,22 @@
             };
 
             switch(side) {
-                case 0: // top
+                case 0:
                     obstacle.x = Math.random() * canvas.width;
                     obstacle.y = -obstacle.height;
                     obstacle.direction.y = 1;
                     break;
-                case 1: // right
+                case 1:
                     obstacle.x = canvas.width + obstacle.width;
                     obstacle.y = Math.random() * canvas.height;
                     obstacle.direction.x = -1;
                     break;
-                case 2: // bottom
+                case 2:
                     obstacle.x = Math.random() * canvas.width;
                     obstacle.y = canvas.height + obstacle.height;
                     obstacle.direction.y = -1;
                     break;
-                case 3: // left
+                case 3:
                     obstacle.x = -obstacle.width;
                     obstacle.y = Math.random() * canvas.height;
                     obstacle.direction.x = 1;
@@ -249,6 +251,7 @@
             player.x = canvas.width / 2;
             player.y = canvas.height / 2;
             player.rotation = 0;
+            player.speed = player.normalSpeed;
             
             scoreElement.textContent = '0';
             levelElement.textContent = '1';
@@ -261,14 +264,16 @@
         const keys = {};
         window.addEventListener('keydown', (e) => {
             keys[e.key] = true;
-            
             if (e.key === ' ') {
-                player.rotation += Math.PI / 4;
+                player.speed = player.slowSpeed;
             }
         });
 
         window.addEventListener('keyup', (e) => {
             keys[e.key] = false;
+            if (e.key === ' ') {
+                player.speed = player.normalSpeed;
+            }
         });
 
         setInterval(() => {
@@ -301,7 +306,6 @@
                 const response = await fetch(`translations/${currentLanguage}.json`);
                 const translations = await response.json();
                 
-                // Update text elements
                 document.title = translations.triangle_game_title || 'Navigate the Triangle!';
                 document.getElementById('gameOverText').textContent = translations.game_over || 'Game Over!';
                 document.getElementById('playAgainText').textContent = translations.play_again || 'Play Again';
@@ -309,18 +313,16 @@
                 document.getElementById('scoreText').textContent = translations.score || 'Score';
                 document.getElementById('levelText').textContent = translations.level || 'Level';
                 document.getElementById('instructionsText').textContent = 
-                    translations.triangle_instructions || 'Use arrow keys to move, Space to rotate';
-                document.getElementById('finalScoreText').textContent = (translations.final_score || 'Final Score');
+                    translations.triangle_instructions || 'Use arrow keys to move, Space to slow down';
+                document.getElementById('finalScoreText').textContent = translations.final_score || 'Final Score';
             } catch (error) {
                 console.error("Error loading translation:", error);
             }
         }
 
-        // Initialize theme and translations
         setTheme();
         updateTranslations();
 
-        // Watch for theme changes
         window.addEventListener('storage', (e) => {
             if (e.key === 'theme') {
                 setTheme();
@@ -329,7 +331,6 @@
             }
         });
 
-        // Start the game
         startGame();
     </script>
 </body>
