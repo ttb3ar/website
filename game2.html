@@ -114,7 +114,7 @@
     </div>
     <div id="menu">
         <h2 id="gameOverText">Game Over!</h2>
-        <p><span id="finalScoreText">Final Score<span id="finalScore">0</span></p>
+        <p><span id="finalScoreText">Final Score</span>: <span id="finalScore">0</span></p>
         <button onclick="startGame()" id="playAgainText">Play Again</button>
         <button onclick="window.location.href='index.html'" id="backHomeText">Back to Home</button>
     </div>
@@ -152,8 +152,7 @@
                 document.getElementById('gameOverText').textContent = translations.game_over || 'Game Over!';
                 document.getElementById('playAgainText').textContent = translations.play_again || 'Play Again';
                 document.getElementById('backHomeText').textContent = translations.back_to_home || 'Back to Home';
-                document.getElementById('finalScoreText').textContent = 
-                    (translations.final_score || 'Final Score') + finalScoreElement.textContent;
+                document.getElementById('finalScoreText').textContent = (translations.final_score || 'Final Score');
             } catch (error) {
                 console.error("Error loading translation:", error);
             }
